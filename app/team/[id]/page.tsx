@@ -11,11 +11,12 @@ import { useEmployees } from "../../hooks/useEmployees";
 import type { TabKey } from "../../types/types";
 
 const EmployeeProfilePage = () => {
-  const { id } = useParams();
   const { employees, loading, error, updateEmployee } = useEmployees();
+  const { id } = useParams();
+
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [telegram, setTelegram] = useState<string>("");
-  const [openDialog, setOpenDialog] = useState(false);
   const [tab, setTab] = useState<TabKey>("info");
   const [phone, setPhone] = useState<string>("");
 

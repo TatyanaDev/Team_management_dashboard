@@ -4,25 +4,6 @@ import { FC, memo } from "react";
 import Image from "next/image";
 import type { Employee } from "../types/types";
 
-const CARD_SX = {
-  width: "100%",
-  display: "flex",
-  flexDirection: "column",
-  borderRadius: 2,
-  transition: "transform 120ms ease, box-shadow 120ms ease",
-  "&:hover": { transform: "translateY(-2px)", boxShadow: 4 },
-} as const;
-
-const IMAGE_BOX_SX = {
-  position: "relative",
-  width: "100%",
-  height: { xs: 160, md: 180 },
-  bgcolor: "grey.100",
-  borderTopLeftRadius: 8,
-  borderTopRightRadius: 8,
-  overflow: "hidden",
-} as const;
-
 const statusColor = (status: string): ChipProps["color"] => {
   switch (status?.toLowerCase()) {
     case "active":
@@ -44,9 +25,30 @@ const EmployeeCard: FC<EmployeeCardProps> = ({ employee }) => {
   const handleClick = () => router.push(`/team/${employee.id}`);
 
   return (
-    <Card variant="outlined" sx={CARD_SX} role="listitem">
+    <Card
+      variant="outlined"
+      sx={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: 2,
+        transition: "transform 120ms ease, box-shadow 120ms ease",
+        "&:hover": { transform: "translateY(-2px)", boxShadow: 4 },
+      }}
+      role="listitem"
+    >
       <CardActionArea onClick={handleClick} sx={{ height: "100%", alignItems: "stretch" }} aria-label={`Open profile of ${employee.name}`} aria-labelledby={`employee-title-${employee.id}`} aria-describedby={`employee-desc-${employee.id}`}>
-        <Box sx={IMAGE_BOX_SX}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            height: { xs: 160, md: 180 },
+            bgcolor: "grey.100",
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+            overflow: "hidden",
+          }}
+        >
           <Image src={employee.avatarUrl} alt={`${employee.name} profile photo`} fill sizes="(max-width:600px) 100vw, (max-width:1200px) 50vw, 25vw" priority />
         </Box>
 

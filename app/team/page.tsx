@@ -11,6 +11,7 @@ import { useEmployees } from "../hooks/useEmployees";
 
 const TeamPage = () => {
   const { employees, loading, error } = useEmployees();
+
   const [selectedDepartment, setSelectedDepartment] = useState<string>("All");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -27,6 +28,7 @@ const TeamPage = () => {
       employees.filter((employee) => {
         const matchesName = employee.name.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesDepartment = selectedDepartment === "All" || employee.department === selectedDepartment;
+
         return matchesName && matchesDepartment;
       }),
     [employees, searchTerm, selectedDepartment]

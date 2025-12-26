@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Team Management Dashboard",
+  title: "Team management dashboard",
   description: "A powerful team management tool for viewing and editing employee information, tracking tasks, and filtering by department and name.",
 };
 

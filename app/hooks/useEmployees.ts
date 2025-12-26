@@ -51,6 +51,7 @@ export const useEmployees = (id?: string) => {
     setEmployees((prevEmployees) => {
       const updatedEmployees = prevEmployees.map((employee) => (employee.id === id ? { ...employee, ...updatedData } : employee));
       localStorage.setItem("employees", JSON.stringify(updatedEmployees));
+
       return updatedEmployees;
     });
 

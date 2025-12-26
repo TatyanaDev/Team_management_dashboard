@@ -1,7 +1,7 @@
 import { useState, useEffect, memo, useCallback } from "react";
+import { Box, Paper, Typography, Grid } from "@mui/material";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import type { NotificationData, Task, TaskStatus } from "../types/types";
-import { Box, Paper, Typography, Grid } from "@mui/material";
 import { updateTaskOnServer } from "../services/taskService";
 import { useTasks } from "../hooks/useTasks";
 import StatusMessage from "./StatusMessage";
@@ -10,6 +10,7 @@ import Droppable from "./Droppable";
 
 const TaskBoard = () => {
   const { tasks, setTasks, loading, error } = useTasks();
+
   const [optimisticTasks, setOptimisticTasks] = useState<Task[]>([]);
   const [notification, setNotification] = useState<NotificationData>({
     open: false,
